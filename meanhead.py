@@ -51,6 +51,7 @@ replied = Counter()
 faved = Counter()
 
 for tweet in parsejs(tweets_file):
+    tweet = tweet['tweet']
     if re.match('^RT:? ', tweet["full_text"]) and len(tweet["entities"]["user_mentions"]) > 0:
         retweeted[tweet["entities"]["user_mentions"][0]["screen_name"]] += 1
     elif tweet.get("in_reply_to_screen_name"):
